@@ -1,4 +1,4 @@
-import { Component, OnInit, Input  } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
 import { Text } from '../text';
 
 @Component({
@@ -8,6 +8,10 @@ import { Text } from '../text';
 })
 export class TextDetailComponent implements OnInit {
   @Input() text: Text;
+  @Output() isComplete = new EventEmitter<boolean>();
+  textComplete(complete:boolean){
+    this.isComplete.emit(complete);
+  }
 
   constructor() { }
 

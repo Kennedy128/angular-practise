@@ -1,10 +1,11 @@
-<div>
-    <h1>My Texts</h1>
-    <hr>
-    <ul>
-      <li *ngFor='let text of texts'>
-        {{text.name}}
-        <app-text-detail [text]='text'></app-text-detail>
-      </li>
-    </ul>
-  </div>
+<h1>My Texts</h1>
+<ul>
+    <div *ngFor='let text of texts;let i = index'>
+        <li appStrikethrough>{{text.name}} due on {{text.completeDate|date|uppercase}}</li>
+        <button  (click)='toggleDetails(i)'>Toggle Details</button>
+
+    <app-text-details *ngIf="text.showDescription" [text]='text' (isComplete)= 'completeText($event,i)'></app-text-details>
+    
+    </div>
+</ul>
+<p *ngIf='texts.length > 5'>You have too many texts</p>
