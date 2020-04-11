@@ -18,6 +18,15 @@ export class TextComponent implements OnInit {
    
     
   ];
+  deleteText(isComplete, index){
+    if (isComplete) {
+      let toDelete = confirm(`Are you sure you want to delete ${this.texts[index].name}?`)
+
+      if (toDelete){
+        this.texts.splice(index,1)
+      }
+    }
+  }
   toggleDetails(index){
     this.texts[index].showDescription = !this.texts[index].showDescription;
   }

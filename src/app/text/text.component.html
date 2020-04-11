@@ -1,11 +1,23 @@
-<h1>My Texts</h1>
-<ul>
-    <div *ngFor='let text of texts;let i = index'>
-        <li appStrikethrough>{{text.name}} due on {{text.completeDate|date|uppercase}}</li>
-        <button  (click)='toggleDetails(i)'>Toggle Details</button>
-
-    <app-text-details *ngIf="text.showDescription" [text]='text' (isComplete)= 'completeText($event,i)'></app-text-details>
-    
+<div class="container">
+    <h1>MY TEXTS</h1>
+    <hr>
+  
+    <div class="row">
+      <div class="col-md-6">
+        <div *ngFor='let text of texts;let i = index'>
+          <div>
+            <h6 id={{i}} appStrikethrough>{{text.name}} due on {{text.completeDate|date|uppercase}}</h6>
+            <button (click)='toggleDetails(i)' class="btn btn-primary">Toggle Details</button>
+          </div>
+  
+          <div *ngIf='text.showDescription'>
+            <app-text-detail  [text]='text' (isComplete) = 'deleteText($event,i)'></app-text-detail>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <app-text-form></app-text-form>
+      </div>
     </div>
-</ul>
-<p *ngIf='texts.length > 5'>You have too many texts</p>
+    <p *ngIf='texts.length > 5'>You have too many texts</p>
+  </div>

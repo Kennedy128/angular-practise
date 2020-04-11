@@ -7,6 +7,14 @@ import { Text } from '../text';
   styleUrls: ['./text-detail.component.css']
 })
 export class TextDetailComponent implements OnInit {
+
+  
+  textDelete(complete:boolean){
+    this.isComplete.emit(complete);
+  }
+
+
+
   @Input() text: Text;
   @Output() isComplete = new EventEmitter<boolean>();
   textComplete(complete:boolean){
