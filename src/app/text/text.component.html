@@ -1,0 +1,10 @@
+<div>
+    <h1>My Texts</h1>
+    <hr>
+    <ul>
+      <li *ngFor='let text of texts'>
+        {{text.name}}
+        <app-text-detail [text]='text'></app-text-detail>
+      </li>
+    </ul>
+  </div>
